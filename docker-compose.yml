@@ -1,0 +1,14 @@
+version: '3'
+services:
+  database:
+    build: ./database
+    ports:
+      - 33306:3306
+    container_name: database-container 
+  backend:
+    build: ./backend
+    container_name: backend-container 
+    ports:
+      - 3009:3000
+    links:
+        - database
