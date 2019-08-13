@@ -1,14 +1,16 @@
-version: '3'
+version: '3.7'
 services:
   database:
-    build: ./database
+    build:
+    context: ./database
     ports:
-      - 33306:3306
+      - 3306:3306
     container_name: database-container 
   backend:
-    build: ./backend
-    container_name: backend-container 
+    build:
+    context: ./backend-cms
+    container_name: backendcms-container 
     ports:
-      - 3009:3000
+      - 3002:3002
     links:
         - database
