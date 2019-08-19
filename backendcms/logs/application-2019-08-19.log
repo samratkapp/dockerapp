@@ -1,0 +1,3 @@
+{"message":"Hello info again distributed logs","level":"info"}
+{"message":"Hello debug again distributed logs","level":"debug"}
+{"message":"Hello error again distributed logs","level":"error"}
