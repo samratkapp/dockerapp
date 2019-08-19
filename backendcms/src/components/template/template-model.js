@@ -11,9 +11,10 @@ class TemplateModel {
         return new Promise(function (resolve, reject) {
             try {
                 sqlConnection.query('SELECT * from template ', (error, results, fields) => {
-                    // if (error) {
-                    //     throw error;
-                    // }
+                    if (error) {
+                        // throw error;
+                        console.log('The solution is: ', error);
+                    }
                     console.log('The solution is: ', results);
     
                     resolve(results);

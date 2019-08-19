@@ -1,4 +1,4 @@
-import templateModel from './template-model'
+
 
 class TemplateVallidation {
 
