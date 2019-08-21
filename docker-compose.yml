@@ -8,6 +8,10 @@ services:
     ports:
       - 3306:3306
     container_name: database-container
+    hostname: mysqldatabase
+    networks:
+      testing_net:
+        ipv4_address: 10.5.0.5
     # volumes:
     #   - ./database:/var/usr/ 
   backend:
@@ -22,6 +26,10 @@ services:
         - database
     depends_on:
       - database
+    networks:
+      testing_net:
+        ipv4_address: 10.5.0.6
+        
   frontend:
     build: react-frontend
     image: "sam/react-frontend:1.0"
@@ -33,4 +41,12 @@ services:
     depends_on:
       - database
       - backend
-
+    networks:
+      testing_net:
+        ipv4_address: 10.5.0.7
+networks:
+  testing_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.5.0.0/16

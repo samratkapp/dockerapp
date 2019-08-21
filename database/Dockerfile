@@ -8,9 +8,9 @@ ENV MYSQL_ROOT_PASSWORD='root'
 #password
 
 
-#COPY ./sql-scripts/ /docker-entrypoint-initdb.d/
+COPY ./sql-scripts/ /docker-entrypoint-initdb.d/
  
 EXPOSE 3306
 
-CMD [mysqld]
+# CMD [mysqld]
  #  docker run  -e MYSQL_DATABASE='dbcms' -e MYSQL_ROOT_PASSWORD='password' env/dbimage
