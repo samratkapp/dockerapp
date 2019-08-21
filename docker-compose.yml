@@ -1,16 +1,36 @@
 version: '3.7'
 services:
   database:
-    build:
-    context: ./database
+    #env_file: database/env.list
+    build: database
+    image: "sam/database:1.0"
+    command: --default-authentication-plugin=mysql_native_password
     ports:
       - 3306:3306
-    container_name: database-container 
+    container_name: database-container
+    # volumes:
+    #   - ./database:/var/usr/ 
   backend:
-    build:
-    context: ./backend-cms
-    container_name: backendcms-container 
+    build: backendcms
+    image: "sam/backendcms:1.0"
+    container_name: backendcms-container
+    # volumes:
+    #   - ./backend:/usr/src/app
     ports:
-      - 3002:3002
+      - 3000:3000
     links:
         - database
+    depends_on:
+      - database
+  frontend:
+    build: react-frontend
+    image: "sam/react-frontend:1.0"
+    container_name: react-frontend-container
+    # volumes:
+    #   - ./react-frontend:/usr/src/react-app
+    ports:
+      - 4000:3000
+    depends_on:
+      - database
+      - backend
+

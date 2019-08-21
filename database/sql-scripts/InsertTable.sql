@@ -1,0 +1,1 @@
+INSERT INTO  template (title,description)values('title','description');
