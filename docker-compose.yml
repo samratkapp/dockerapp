@@ -10,8 +10,7 @@ services:
     container_name: database-container
     hostname: mysqldatabase
     networks:
-      testing_net:
-        ipv4_address: 10.5.0.5
+      - nw_dockerapp
     # volumes:
     #   - ./database:/var/usr/ 
   backend:
@@ -27,8 +26,8 @@ services:
     depends_on:
       - database
     networks:
-      testing_net:
-        ipv4_address: 10.5.0.6
+      - nw_dockerapp
+      #  ipv4_address: 10.5.0.6
         
   frontend:
     build: react-frontend
@@ -42,11 +41,8 @@ services:
       - database
       - backend
     networks:
-      testing_net:
-        ipv4_address: 10.5.0.7
+      - nw_dockerapp
+      #  ipv4_address: 10.5.0.7
 networks:
-  testing_net:
-    ipam:
-      driver: default
-      config:
-        - subnet: 10.5.0.0/16
+  nw_dockerapp: 
+      driver: bridge 

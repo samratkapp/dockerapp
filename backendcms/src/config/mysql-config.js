@@ -5,7 +5,7 @@ let sqlConnection;
 try {
     sqlConnection = mysql.createPool({
         connectionLimit: 10,
-        host: '10.5.0.5',
+        host: "database" , // process.env.DATABASE_HOST || '127.0.0.1',
         user: 'root',
         password: 'root',
         database: 'dbcms',
